@@ -4,6 +4,8 @@
 
 - [ ] update solutions
 - [ ] add function to open discuss page
+- [ ] accept multiple ids
+- [ ] accept range
 - [ ] generate default return type for complex problems to make code compile when problem initialized
 
 ### Usage
