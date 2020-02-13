@@ -3,6 +3,7 @@
 ### TODO
 
 - [ ] update solutions
+- [ ] add multiple solutions
 - [ ] add function to open discuss page
 - [ ] accept multiple ids
 - [ ] accept range

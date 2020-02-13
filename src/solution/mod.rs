@@ -264,3 +264,8 @@ mod s0453_minimum_moves_to_equal_array_elements;
 mod s0455_assign_cookies;
 mod s0463_island_perimeter;
 mod s0476_number_complement;
+mod s0482_license_key_formatting;
+mod s0485_max_consecutive_ones;
+mod s0492_construct_the_rectangle;
+mod s0496_next_greater_element_i;
+mod s0500_keyboard_row;
