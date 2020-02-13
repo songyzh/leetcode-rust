@@ -269,3 +269,4 @@ mod s0485_max_consecutive_ones;
 mod s0492_construct_the_rectangle;
 mod s0496_next_greater_element_i;
 mod s0500_keyboard_row;
+mod s0322_coin_change;
