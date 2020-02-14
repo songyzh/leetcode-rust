@@ -270,3 +270,5 @@ mod s0492_construct_the_rectangle;
 mod s0496_next_greater_element_i;
 mod s0500_keyboard_row;
 mod s0322_coin_change;
+mod s0328_odd_even_linked_list;
+mod s0331_verify_preorder_serialization_of_a_binary_tree;
