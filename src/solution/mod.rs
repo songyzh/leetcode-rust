@@ -273,3 +273,7 @@ mod s0322_coin_change;
 mod s0328_odd_even_linked_list;
 mod s0331_verify_preorder_serialization_of_a_binary_tree;
 mod s0337_house_robber_iii;
+mod s0347_top_k_frequent_elements;
+mod s0357_count_numbers_with_unique_digits;
+mod s0368_largest_divisible_subset;
+mod s0373_find_k_pairs_with_smallest_sums;
