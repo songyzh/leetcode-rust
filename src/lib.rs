@@ -1,5 +1,6 @@
 #[macro_use]
 pub mod util;
 
-pub mod solution;
+pub mod algorithm;
 pub mod problem;
+pub mod solution;
