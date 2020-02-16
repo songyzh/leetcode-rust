@@ -25,7 +25,6 @@ impl Solution {
             if c != ']' {
                 stack.push(c);
             } else {
-                println!("{:?}", stack);
                 let mut pattern = String::new();
                 while *stack.last().unwrap() != '[' {
                     pattern.push(stack.pop().unwrap());
