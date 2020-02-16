@@ -277,3 +277,6 @@ mod s0347_top_k_frequent_elements;
 mod s0357_count_numbers_with_unique_digits;
 mod s0368_largest_divisible_subset;
 mod s0373_find_k_pairs_with_smallest_sums;
+mod s0375_guess_number_higher_or_lower_ii;
+mod s0377_combination_sum_iv;
+mod s0378_kth_smallest_element_in_a_sorted_matrix;
