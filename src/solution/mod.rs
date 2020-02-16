@@ -284,3 +284,4 @@ mod s0386_lexicographical_numbers;
 mod s0388_longest_absolute_file_path;
 mod s0390_elimination_game;
 mod s0393_utf_8_validation;
+mod s0394_decode_string;
