@@ -283,3 +283,4 @@ mod s0378_kth_smallest_element_in_a_sorted_matrix;
 mod s0386_lexicographical_numbers;
 mod s0388_longest_absolute_file_path;
 mod s0390_elimination_game;
+mod s0393_utf_8_validation;
