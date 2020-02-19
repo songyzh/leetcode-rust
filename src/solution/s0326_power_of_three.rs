@@ -33,6 +33,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/power-of-three/
+// discuss: https://leetcode.com/problems/power-of-three/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

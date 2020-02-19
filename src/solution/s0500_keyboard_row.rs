@@ -27,6 +27,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/keyboard-row/
+// discuss: https://leetcode.com/problems/keyboard-row/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 use std::collections::HashMap;
 

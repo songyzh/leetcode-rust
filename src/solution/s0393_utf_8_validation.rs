@@ -48,6 +48,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/utf-8-validation/
+// discuss: https://leetcode.com/problems/utf-8-validation/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

@@ -10,6 +10,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/lexicographical-numbers/
+// discuss: https://leetcode.com/problems/lexicographical-numbers/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

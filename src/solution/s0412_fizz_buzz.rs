@@ -32,6 +32,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/fizz-buzz/
+// discuss: https://leetcode.com/problems/fizz-buzz/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

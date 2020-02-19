@@ -24,6 +24,9 @@ use std::collections::HashMap;
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/ransom-note/
+// discuss: https://leetcode.com/problems/ransom-note/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

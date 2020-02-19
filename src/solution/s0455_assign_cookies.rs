@@ -36,6 +36,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/assign-cookies/
+// discuss: https://leetcode.com/problems/assign-cookies/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

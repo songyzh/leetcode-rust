@@ -20,6 +20,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/first-unique-character-in-a-string/
+// discuss: https://leetcode.com/problems/first-unique-character-in-a-string/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {
