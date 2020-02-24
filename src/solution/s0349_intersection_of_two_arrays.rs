@@ -32,6 +32,9 @@ use std::hash::Hash;
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/intersection-of-two-arrays/
+// discuss: https://leetcode.com/problems/intersection-of-two-arrays/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

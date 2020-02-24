@@ -36,6 +36,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/arranging-coins/
+// discuss: https://leetcode.com/problems/arranging-coins/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

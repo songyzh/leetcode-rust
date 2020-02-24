@@ -28,6 +28,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/maximum-product-of-word-lengths/
+// discuss: https://leetcode.com/problems/maximum-product-of-word-lengths/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {

@@ -36,6 +36,9 @@
  */
 pub struct Solution {}
 
+// problem: https://leetcode.com/problems/combination-sum-iv/
+// discuss: https://leetcode.com/problems/combination-sum-iv/discuss/?currentPage=1&orderBy=most_votes&query=
+
 // submission codes start here
 
 impl Solution {
