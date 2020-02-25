@@ -285,3 +285,4 @@ mod s0704_binary_search;
 mod s0969_pancake_sorting;
 mod s1018_binary_prefix_divisible_by_5;
 mod s1046_last_stone_weight;
+mod s0395_longest_substring_with_at_least_k_repeating_characters;
