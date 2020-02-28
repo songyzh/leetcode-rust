@@ -29,46 +29,32 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let (mut l1, mut l2) = (l1, l2);
-        let mut dummy_head = Some(Box::new(ListNode::new(0)));
-        let mut tail = &mut dummy_head;
-        let (mut l1_end, mut l2_end, mut overflow) = (false, false, false);
-        loop {
-            let lhs = match l1 {
-                Some(node) => {
-                    l1 = node.next;
-                    node.val
-                }
-                None => {
-                    l1_end = true;
-                    0
-                }
-            };
-            let rhs = match l2 {
-                Some(node) => {
-                    l2 = node.next;
-                    node.val
-                }
-                None => {
-                    l2_end = true;
-                    0
-                }
-            };
-            // if l1, l2 end and there is not overflow from previous operation, return the result
-            if l1_end && l2_end && !overflow {
-                break dummy_head.unwrap().next;
+        let mut l1 = l1;
+        let mut l2 = l2;
+        let mut dummy = Some(Box::new(ListNode::new(0)));
+        let mut dummy_ref = dummy.as_mut().unwrap();
+        let mut carrier = 0;
+        while l1.is_some() || l2.is_some() {
+            let mut v1 = 0;
+            if l1.is_some() {
+                v1 = l1.as_ref().unwrap().val;
+                l1 = l1.unwrap().next;
             }
-            let sum = lhs + rhs + if overflow { 1 } else { 0 };
-            let sum = if sum >= 10 {
-                overflow = true;
-                sum - 10
-            } else {
-                overflow = false;
-                sum
-            };
-            tail.as_mut().unwrap().next = Some(Box::new(ListNode::new(sum)));
-            tail = &mut tail.as_mut().unwrap().next
+            let mut v2 = 0;
+            if l2.is_some() {
+                v2 = l2.as_ref().unwrap().val;
+                l2 = l2.unwrap().next;
+            }
+            let sum = v1 + v2 + carrier;
+            let curr = sum % 10;
+            carrier = sum / 10;
+            dummy_ref.next = Some(Box::new(ListNode::new(curr)));
+            dummy_ref = dummy_ref.next.as_mut().unwrap();
         }
+        if carrier > 0 {
+            dummy_ref.next = Some(Box::new(ListNode::new(carrier)));
+        }
+        dummy.unwrap().next
     }
 }
 

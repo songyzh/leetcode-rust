@@ -23,31 +23,29 @@ pub struct Solution {}
 
 impl Solution {
     pub fn next_permutation(nums: &mut Vec<i32>) {
-        let len = nums.len();
-        let mut i = (len - 1) as i32;
-        let mut prev = -1;
-        // find the decrement digit from end
-        while i >= 0 {
-            if nums[i as usize] < prev {
+        let mut change_index = None;
+        for i in (0..nums.len() - 1).rev() {
+            if nums[i] < nums[i + 1] {
+                change_index = Some(i);
                 break;
             }
-            prev = nums[i as usize];
-            i -= 1;
         }
-        let mut j = len - 1;
-        // find the first digit larger than nums[i]
-        // we can do binary search here to make a slightly improvement
-        if i >= 0 {
-            while j > (i as usize) {
-                if nums[j] > nums[i as usize] {
-                    nums.swap(i as usize, j);
-                    break;
-                }
-                j -= 1;
+        if change_index.is_none() {
+            nums.sort_unstable();
+            return;
+        }
+        let change_index = change_index.unwrap();
+        let mut successor_index = None;
+        for i in (change_index + 1..nums.len()).rev() {
+            if nums[i] > nums[change_index] {
+                successor_index = Some(i);
+                break;
             }
         }
-        let slice = &mut nums[((i + 1) as usize)..len];
-        slice.reverse();
+        let successor_index = successor_index.unwrap();
+        nums.swap(change_index, successor_index);
+        let len = nums.len();
+        nums[change_index + 1..len].sort_unstable()
     }
 }
 

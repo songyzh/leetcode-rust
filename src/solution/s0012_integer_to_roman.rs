@@ -68,7 +68,8 @@ pub struct Solution {}
 
 impl Solution {
     pub fn int_to_roman(num: i32) -> String {
-        let table: Vec<(i32, &'static str)> = vec![
+        let mut num = num;
+        let lookup = vec![
             (1000, "M"),
             (900, "CM"),
             (500, "D"),
@@ -83,18 +84,15 @@ impl Solution {
             (4, "IV"),
             (1, "I"),
         ];
-
-        let mut num = num;
-        let mut sb = String::new();
-        for p in table.iter() {
-            if num >= p.0 {
-                for _ in 0..(num / p.0) {
-                    sb.push_str(p.1);
-                }
-                num = num % p.0
+        let mut ret = String::new();
+        for (val, rom) in lookup {
+            if num >= val {
+                let cnt = num / val;
+                (0..cnt).map(|_| ret.push_str(rom)).count();
+                num %= val;
             }
         }
-        sb
+        ret
     }
 }
 

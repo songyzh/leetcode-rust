@@ -5,13 +5,13 @@
  *
  * Note: You may not slant the container and n is at least 2.
  *
- *  
+ *
  *
  * <img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg" style="width: 600px; height: 287px;" />
  *
  * <small>The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49. </small>
  *
- *  
+ *
  *
  * Example:
  *
@@ -32,37 +32,20 @@ pub struct Solution {}
 // Two Pointer: a[0] ->    <- a[n-1]
 impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {
-        let (mut start, mut end) = (0_usize, (height.len() - 1));
-        let mut max: i32 = (end - start) as i32 * Solution::min(height[start], height[end]);
-        let mut curr_area: i32 = 0;
-        while end - start > 1 {
-            // move the lower one
-            if height[start] < height[end] {
-                start += 1;
-                if height[start] < height[start - 1] {
-                    continue;
-                }
+        let mut ret = 0;
+        let mut left_index = 0;
+        let mut right_index = height.len() - 1;
+        while left_index < right_index {
+            let width = (right_index - left_index) as i32;
+            let curr = width * height[left_index].min(height[right_index]);
+            ret = ret.max(curr);
+            if height[left_index] > height[right_index] {
+                right_index -= 1;
             } else {
-                end -= 1;
-                if height[end] < height[end + 1] {
-                    continue;
-                }
-            }
-            curr_area = (end - start) as i32 * Solution::min(height[start], height[end]);
-            if curr_area > max {
-                max = curr_area
+                left_index += 1;
             }
         }
-        max
-    }
-
-    #[inline(always)]
-    fn min(i: i32, j: i32) -> i32 {
-        if i > j {
-            j
-        } else {
-            i
-        }
+        ret
     }
 }
 
