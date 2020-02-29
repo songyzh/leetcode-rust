@@ -33,26 +33,69 @@ pub struct Solution {}
 
 // submission codes start here
 
-// TODO
-use std::char::from_digit;
-use std::collections::VecDeque;
+// TODO: optimize
 impl Solution {
     pub fn multiply(num1: String, num2: String) -> String {
-        let mut num1: Vec<u32> = num1.chars().map(|ch| ch.to_digit(10).unwrap()).collect();
-        let mut num2: Vec<u32> = num2.chars().map(|ch| ch.to_digit(10).unwrap()).collect();
-        let mut buffer = VecDeque::with_capacity(num2.len() + 1);
-        let mut res: Vec<char> = Vec::new();
-        let mut carry = 0_u32;
-        num1.reverse();
-        num2.reverse();
-        for (i, multiplier) in num1.into_iter().enumerate() {
-            buffer
-                .pop_back()
-                .and_then(|digit| Some(res.push(from_digit(digit, 10).unwrap())));
-            for &multiplicand in num2.iter() {}
+        if num1.starts_with("0") || num2.starts_with("0") {
+            return "0".to_string();
         }
-        res.reverse();
-        res.into_iter().collect()
+        let num1: Vec<char> = num1.chars().collect();
+        let num2: Vec<char> = num2.chars().collect();
+        let mut ret = vec![];
+        for i in 0..num1.len() {
+            if num1[i] == '0' {
+                continue;
+            }
+            for j in 0..num2.len() {
+                if num2[j] == '0' {
+                    continue;
+                }
+                let zeros = num1.len() - 1 - i + num2.len() - 1 - j;
+                let mut curr = Self::multiply_char_char(num1[i], num2[j]);
+                Self::pad_zeros(&mut curr, zeros);
+                ret = Self::add_string(ret, curr.chars().collect());
+            }
+        }
+        ret.iter().collect()
+    }
+
+    fn multiply_char_char(c1: char, c2: char) -> String {
+        (c1.to_digit(10).unwrap() * c2.to_digit(10).unwrap()).to_string()
+    }
+
+    fn add_string(num1: Vec<char>, num2: Vec<char>) -> Vec<char> {
+        let mut ret = vec!['0'; num1.len().max(num2.len())];
+        let mut index1 = num1.len() as i32 - 1;
+        let mut index2 = num2.len() as i32 - 1;
+        let mut carrier = 0;
+        while index1 >= 0 || index2 >= 0 {
+            let mut v1 = 0;
+            if index1 >= 0 {
+                v1 = num1[index1 as usize].to_digit(10).unwrap();
+            }
+            let mut v2 = 0;
+            if index2 >= 0 {
+                v2 = num2[index2 as usize].to_digit(10).unwrap();
+            }
+            let sum = v1 + v2 + carrier;
+            let curr = sum % 10;
+            carrier = sum / 10;
+            ret[index1.max(index2) as usize] = std::char::from_digit(curr, 10).unwrap();
+            if index1 >= 0 {
+                index1 -= 1;
+            }
+            if index2 >= 0 {
+                index2 -= 1;
+            }
+        }
+        if carrier > 0 {
+            ret.insert(0, std::char::from_digit(carrier, 10).unwrap());
+        }
+        ret
+    }
+
+    fn pad_zeros(s: &mut String, zeros: usize) {
+        (0..zeros).map(|_| s.push('0')).count();
     }
 }
 

@@ -74,6 +74,33 @@ impl Solution {
             }
         }
     }
+
+    pub fn combination_sum_1(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
+        let mut ret = vec![];
+        Self::helper(&candidates, target, &mut vec![], 0, &mut ret);
+        ret
+    }
+
+    fn helper(
+        candidates: &Vec<i32>,
+        target: i32,
+        curr: &mut Vec<i32>,
+        start_index: usize,
+        ret: &mut Vec<Vec<i32>>,
+    ) {
+        if target == 0 {
+            ret.push(curr.clone());
+            return;
+        }
+        if target < 0 {
+            return;
+        }
+        for i in start_index..candidates.len() {
+            curr.push(candidates[i]);
+            Self::helper(candidates, target - candidates[i], curr, i, ret);
+            curr.pop();
+        }
+    }
 }
 
 // submission codes end

@@ -49,6 +49,18 @@ impl Solution {
         }
         dummy_head.unwrap().next
     }
+
+    pub fn swap_pairs_1(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        if head.is_none() || head.as_ref().unwrap().next.is_none() {
+            return head;
+        }
+        let mut head = head;
+        let mut third = head.as_mut().unwrap().next.as_mut().unwrap().next.take();
+        let mut second = head.as_mut().unwrap().next.take();
+        head.as_mut().unwrap().next = Self::swap_pairs(third);
+        second.as_mut().unwrap().next = head;
+        second
+    }
 }
 
 // submission codes end

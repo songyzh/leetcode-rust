@@ -92,6 +92,26 @@ impl Solution {
             }
         }
     }
+
+    pub fn rotate_1(matrix: &mut Vec<Vec<i32>>) {
+        let n = matrix.len();
+        // top-down flip
+        for i in 0..n / 2 {
+            for j in 0..n {
+                let tmp = matrix[i][j];
+                matrix[i][j] = matrix[n - 1 - i][j];
+                matrix[n - 1 - i][j] = tmp;
+            }
+        }
+        // diagonal
+        for i in 0..n {
+            for j in 0..i {
+                let tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
+            }
+        }
+    }
 }
 
 // submission codes end

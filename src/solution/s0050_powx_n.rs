@@ -40,10 +40,30 @@ pub struct Solution {}
 
 // submission codes start here
 
-impl Solution {
-    pub fn my_pow(x: f64, n: i32) -> f64 {
-        x.powi(n)
+pub fn my_pow(x: f64, n: i32) -> f64 {
+    if x == 0_f64 || x == 1_f64 {
+        return x;
     }
+    if n == 0 {
+        return 1_f64;
+    }
+    if n == 1 {
+        return x;
+    }
+    let mut tmp = 1_f64;
+    let mut x = x;
+    let mut n = n;
+    if n == std::i32::MIN {
+        tmp = 1_f64 / x;
+        n += 1;
+    }
+    if n < 0 {
+        x = 1_f64 / x;
+        n = -n;
+    }
+    let half = Self::my_pow(x, n / 2);
+    let extra = if n % 2 == 0 { 1_f64 } else { x };
+    half * half * extra * tmp
 }
 
 // submission codes end
