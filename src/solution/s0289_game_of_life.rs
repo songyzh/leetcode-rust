@@ -51,52 +51,47 @@ pub struct Solution {}
 // in-place: 1: live->live, 0: die->die, 2: die->live, 3: live->die
 impl Solution {
     pub fn game_of_life(board: &mut Vec<Vec<i32>>) {
-        let (height, width) = (board.len(), board[0].len());
-        let neighbors = vec![
-            (-1, -1),
-            (-1, 0),
-            (-1, 1),
-            (0, -1),
-            (0, 1),
-            (1, -1),
-            (1, 0),
-            (1, 1),
-        ];
-        for i in 0..height {
-            for j in 0..width {
-                let mut live = 0;
-                for offset in neighbors.iter() {
-                    if (offset.0 < 0 && i == 0)
-                        || (offset.0 > 0 && i == height - 1)
-                        || (offset.1 < 0 && j == 0)
-                        || (offset.1 > 0 && j == width - 1)
-                    {
-                        continue;
+        let mut to_live = vec![];
+        let mut to_dead = vec![];
+        for i in 0..board.len() {
+            for j in 0..board[0].len() {
+                let surrounding_lives = Self::helper(board, i, j);
+                if board[i][j] == 1 {
+                    if surrounding_lives < 2 || surrounding_lives > 3 {
+                        to_dead.push((i, j));
                     }
-                    let v = board[(i as i32 + offset.0) as usize][(j as i32 + offset.1) as usize];
-                    if v == 1 || v == 3 {
-                        live += 1;
+                } else {
+                    if surrounding_lives == 3 {
+                        to_live.push((i, j));
                     }
-                }
-                if board[i][j] == 1 && (live < 2 || live > 3) {
-                    // go die
-                    board[i][j] = 3;
-                } else if board[i][j] == 0 && live == 3 {
-                    // go live
-                    board[i][j] = 2;
                 }
             }
         }
+        for (i, j) in to_live {
+            board[i][j] = 1;
+        }
+        for (i, j) in to_dead {
+            board[i][j] = 0;
+        }
+    }
 
-        for i in 0..height {
-            for j in 0..width {
-                if board[i][j] == 2 {
-                    board[i][j] = 1;
-                } else if board[i][j] == 3 {
-                    board[i][j] = 0;
+    fn helper(board: &Vec<Vec<i32>>, i: usize, j: usize) -> i32 {
+        // count surrounding lives
+        let i = i as i32;
+        let j = j as i32;
+        let mut ret = 0;
+        for k in i - 1..i + 2 {
+            if k < 0 || k >= board.len() as i32 {
+                continue;
+            }
+            for l in j - 1..j + 2 {
+                if l < 0 || l >= board[0].len() as i32 {
+                    continue;
                 }
+                ret += board[k as usize][l as usize];
             }
         }
+        ret - board[i as usize][j as usize]
     }
 }
 
