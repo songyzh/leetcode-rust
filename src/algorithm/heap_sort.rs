@@ -7,7 +7,7 @@ fn heap_sort(v: &mut Vec<i32>) {
     }
 
     while end > 0 {
-        swap(v, 0, end);
+        v.swap(0, end);
         end -= 1;
         sink(0, v, end);
     }
@@ -36,7 +36,7 @@ fn sink(i: usize, v: &mut Vec<i32>, end: usize) {
         bigger = right;
     }
     if bigger != i {
-        swap(v, i, bigger);
+        v.swap(i, bigger);
         sink(bigger, v, end);
     }
 }

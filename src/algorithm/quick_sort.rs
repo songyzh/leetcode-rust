@@ -16,11 +16,11 @@ fn partition(v: &mut Vec<i32>, left: i32, right: i32) -> i32 {
         let i = i as usize;
         if v[i] <= value {
             pivot += 1;
-            swap(v, i, pivot as usize);
+            v.swap(i, pivot as usize);
         }
     }
     pivot += 1;
-    swap(v, pivot as usize, right as usize);
+    v.swap(pivot as usize, right as usize);
     pivot
 }
 
